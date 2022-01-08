@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea Battle</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="app">
+        <div class="appHeader">
+            <h1 class="appTitle">Sea Battle</h1>
+        </div>
+    <div class="appBody">
+    <div class="fieldOfBattle" data-side="player"></div>
+    <div class="appButtons">
+        <div class="appActions" data-scene="preparation">
+            <button class="appChoice" data-computer="light" disabled>
+               Играть против слабого игрока
+            </button>
+            <button class="appChoice" data-computer="middle" disabled>
+                Играть против среднего игрока
+            </button>
+            <button class="appChoice" data-computer="hard" disabled>
+                Играть против сильного игрока
+            </button>
+            <button class="appChoice" data-computer="random" disabled>
+                Играть против случайного игрока
+            </button>
+            <button class="appChoice" data-computer="challenge" disabled>
+                Вызвать на бой
+            </button>
+            <button class="appChoice" data-computer="manually">
+                Расставить корабли вручную
+            </button>
+            <button class="appChoice" data-computer="randomize">
+                Расставить корабли случайно
+            </button>
+        </div>
+    </div>
+    <div class="fieldOfBattle" data-side="opponent"></div>
+</div>
+</div>
+<script src="src/script.js"></script>
+</body>
+</html>

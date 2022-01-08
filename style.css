@@ -1,0 +1,75 @@
+* {
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+    background: url("img/background.jpg");
+    background-size: cover;
+}
+
+.app {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.appHeader {
+	text-align: center;
+	padding: 30px;
+    font-size: 25pt;
+    color: rgb(7, 7, 54);
+}
+
+.appBody {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+/* .fieldOfBattle {
+	position: relative;
+}
+
+.fieldOfBattle-table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	background: rgba(40, 46, 250, 0.05);
+}
+
+.fieldOfBattle-item {
+	position: relative;
+	width: 32px;
+	height: 32px;
+	border: 1px solid rgba(6, 25, 247, 0.15);
+}
+
+.fieldOfBattle-item__active {
+	background: rgba(123, 121, 255, 0.2);
+}
+
+.fieldOfBattle-status {
+	text-align: center;
+	padding: 20px;
+} */
+
+.appActions {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.appChoice {
+	width: 273px;
+    height: 55px;
+	padding: 10px;
+    font-size: 12pt;
+	margin-bottom: 10px;
+    background-color: rgb(46, 163, 192);
+    border-radius: 17px;
+}
