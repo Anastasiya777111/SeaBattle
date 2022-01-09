@@ -1,10 +1,15 @@
-const mouse= new Mouse(document.body)
+const app= new Application
 
-requestAnimationFrame(tick);
+console.log(app)
 
-function tick(){
-    requestAnimationFrame(tick);
-    console.log(mouse.left, mouse.prevLeft);
 
-    mouse.tick(0);
-}
+// const mouse= new Mouse(document.body)
+
+// requestAnimationFrame(tick);
+
+// function tick(){
+//     requestAnimationFrame(tick);
+//     console.log(mouse.left, mouse.prevLeft);
+
+//     mouse.tick(0);
+// }
