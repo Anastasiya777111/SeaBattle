@@ -31,7 +31,7 @@ body {
 	justify-content: space-between;
 }
 
-/* .fieldOfBattle {
+.fieldOfBattle {
 	position: relative;
 }
 
@@ -55,7 +55,7 @@ body {
 .fieldOfBattle-status {
 	text-align: center;
 	padding: 20px;
-} */
+}
 
 .appActions {
 	height: 100%;
