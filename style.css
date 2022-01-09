@@ -52,9 +52,31 @@ body {
 	background: rgba(123, 121, 255, 0.2);
 }
 
+.marker {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	color: rgb(38, 5, 51);
+	font-size: 14pt;
+}
+
 .fieldOfBattle-status {
 	text-align: center;
 	padding: 20px;
+}
+
+.marker-row {
+	left: -35px;
+}
+
+.marker-column {
+	top: -35px;
 }
 
 .appActions {
