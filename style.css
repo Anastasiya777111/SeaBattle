@@ -79,6 +79,47 @@ body {
 	top: -35px;
 }
 
+.ship {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: -3px;
+	border: 3px solid rgba(3, 28, 110, 0.45);
+	background: rgba(3, 28, 110, 0.45);
+	width: 32px;
+	height: 32px;
+}
+
+.ship-row-1 {
+}
+
+.ship-row-2 {
+	width: 65px;
+}
+
+.ship-row-3 {
+	width: 98px;
+}
+
+.ship-row-4 {
+	width: 131px;
+}
+
+.ship-column-1 {
+}
+
+.ship-column-2 {
+	height: 65px;
+}
+
+.ship-column-3 {
+	height: 98px;
+}
+
+.ship-column-4 {
+	height: 131px;
+}
+
 .appActions {
 	height: 100%;
 	display: flex;

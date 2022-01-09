@@ -71,5 +71,6 @@ tick(){
     this.prevUnder=this.under;
     this.prevLeft=this.left;
     this.prevDelta=this.delta;
+    this.delta=0;
 }
 }

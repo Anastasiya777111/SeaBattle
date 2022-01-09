@@ -59,4 +59,22 @@ tr.dataset.y=y;
         cell.append(marker)
     }
 }
+addShip(ship){
+    if(!super.addShip(ship)){
+    return false;
+    }
+    this.dock.append(ship.div);
+
+if(this.placed){
+
+}else{
+    ship.div.style.left=`${ship.startX}px`;
+    ship.div.style.top=`${ship.startY}px`;
+}
+
+    return true;
+}
+isUnder(point) {
+    return isUnderPoint(point, this.root);
+}
 }
