@@ -45,7 +45,7 @@ body {
 	position: relative;
 	width: 32px;
 	height: 32px;
-	border: 1px solid rgb(55, 6, 122);
+	border: 0.9px solid rgb(55, 6, 122);
 }
 
 .fieldOfBattle-item__active {
@@ -84,7 +84,7 @@ body {
 	top: 0;
 	left: 0;
 	margin: -3px;
-	border: 3px solid rgba(3, 28, 110, 0.45);
+	border: 2.5px solid rgba(3, 28, 110, 0.45);
 	background: rgba(3, 28, 110, 0.45);
 	width: 32px;
 	height: 32px;
@@ -120,12 +120,69 @@ body {
 	height: 131px;
 }
 
+
 .appActions {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
+
+.app-action {
+	width: 210px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.shot {
+	width: 32px;
+	height: 32px;
+	text-align: center;
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.shot-missed {
+	/* color: gray; */
+	color: "black";
+}
+
+.shot-wounded {
+	background: #fbdede;
+	z-index: 1;
+}
+
+.shot-wounded::after {
+	content: " ";
+	width: calc(32px * 1.3);
+	height: calc(32px * 1.3);
+	border-top: 2px solid red;
+	position: absolute;
+	z-index: -1;
+	transform: rotate(45deg);
+	top: 9px;
+	left: -20px;
+}
+
+.shot-wounded::before {
+	content: " ";
+	width: calc(32px * 1.3);
+	height: calc(32px * 1.3);
+	border-top: 2px solid red;
+	position: absolute;
+	z-index: -1;
+	transform: rotate(-45deg);
+	top: 9px;
+	left: 9px;
+}
+
+.shot-killed {
+	margin: -3px;
+	border: 3px solid red;
+}
+
 
 .appChoice {
 	width: 273px;

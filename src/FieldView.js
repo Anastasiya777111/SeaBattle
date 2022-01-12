@@ -59,21 +59,41 @@ tr.dataset.y=y;
         cell.append(marker)
     }
 }
-addShip(ship){
-    if(!super.addShip(ship)){
-    return false;
+addShip(ship, x, y) {
+    if (!super.addShip(ship, x, y)) {
+        return false;
     }
-    this.dock.append(ship.div);
 
-if(this.placed){
+        this.dock.append(ship.div);
 
-}else{
-    ship.div.style.left=`${ship.startX}px`;
-    ship.div.style.top=`${ship.startY}px`;
-}
+        if (ship.placed) {
+            const cell = this.cells[y][x];
+            const cellRect = cell.getBoundingClientRect();
+            const rootRect = this.root.getBoundingClientRect();
+
+            ship.div.style.left = `${cellRect.left - rootRect.left}px`;
+            ship.div.style.top = `${cellRect.top - rootRect.top}px`;
+        } else {
+            ship.setDirection("row");
+            ship.div.style.left = `${ship.startX}px`;
+            ship.div.style.top = `${ship.startY}px`;
+        }
 
     return true;
 }
+
+removeShip(ship) {
+    if (!super.removeShip(ship)) {
+        return false;
+    }
+
+    if (Array.prototype.includes.call(this.dock.children, ship.div)) {
+        ship.div.remove();
+    }
+
+    return true;
+}
+
 isUnder(point) {
     return isUnderPoint(point, this.root);
 }

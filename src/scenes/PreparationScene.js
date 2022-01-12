@@ -25,7 +25,11 @@ draggedOffSetY=0;
         }
     }
 
-    start() {}
+    start() {
+        const{player}=this.app;
+
+        console.log(player.matrix)
+    }
 
     update() {
         const {mouse, player}= this.app;
@@ -49,10 +53,35 @@ this.draggedOffSetY=mouse.y-shipRect.top;
             this.draggedShip.div.style.left=`${mouse.x-left-this.draggedOffSetX}px`;
             this.draggedShip.div.style.top=`${mouse.y-top-this.draggedOffSetY}px`;
         }
-        //Бросание
-if(!mouse.left && this.draggedShip){
-this.draggedShip=null;
-}
+        
+     // Бросание
+	 if (!mouse.left && this.draggedShip) {
+		const ship = this.draggedShip;
+		this.draggedShip = null;
+
+		const { left, top } = ship.div.getBoundingClientRect();
+		const { width, height } = player.cells[0][0].getBoundingClientRect();
+
+		const point = {
+			x: left + width / 2,
+			y: top + height / 2,
+		};
+
+		const cell = player.cells
+			.flat()
+			.find((cell) => isUnderPoint(point, cell));
+
+		if (cell) {
+			const x = parseInt(cell.dataset.x);
+			const y = parseInt(cell.dataset.y);
+
+			player.removeShip(ship);
+			player.addShip(ship, x, y);
+		} else {
+			player.removeShip(ship);
+			player.addShip(ship);
+		}
+	}
 
 		// Врощаение
 		if (this.draggedShip && mouse.delta) {
