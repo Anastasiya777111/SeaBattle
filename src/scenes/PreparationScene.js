@@ -24,6 +24,12 @@ removeEventListeners = [];
 
     start() {
 
+		const { player, opponent } = this.app;
+
+		opponent.clear();
+		player.removeAllShots();
+		player.ships.forEach((ship) => (ship.killed = false));
+
 		this.removeEventListeners = [];
 
 		document
@@ -164,8 +170,18 @@ player.removeAllShips();
 	}
 }
 
-startComputer(level){
-console.log(level)
+startComputer(level) {
+	const matrix = this.app.player.matrix;
+	const withoutShipItems = matrix.flat().filter((item) => !item.ship);
+	let untouchables = [];
+
+	if (level === "light") {
+	} else if (level === "middle") {
+		untouchables = getRandomSeveral(withoutShipItems, 20);
+	} else if (level === "hard") {
+		untouchables = getRandomSeveral(withoutShipItems, 40);
+	}
+
+	this.app.start("computer", untouchables);
 }
-    
 }

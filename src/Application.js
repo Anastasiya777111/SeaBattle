@@ -8,8 +8,8 @@ class Application {
 
     constructor(scenes){
         const mouse=new Mouse(document.body)
-        const player=new FieldView();
-        const opponent=new FieldView();
+        const player=new FieldView(true);
+        const opponent=new FieldView(false);
 
         Object.assign(this, {mouse, player, opponent});
 
@@ -35,23 +35,23 @@ if(this.activeScene){
     this.mouse.tick();
 }
 
-    start(sceneName) {
-if(this.activeScene && this.activeScene.name===sceneName){
-    return false;
-}
-
-if(!this.scenes.hasOwnProperty(sceneName)){
-    return false;
-}
-
-if(this.activeScene){
-    this.activeScene.stop();
-}
-
-const scene=this.scenes[sceneName];
-this.activeScene=scene;
-scene.start();
-
-return true;
+start(sceneName, ...args) {
+    if (this.activeScene && this.activeScene.name === sceneName) {
+        return false;
     }
+
+    if (!this.scenes.hasOwnProperty(sceneName)) {
+        return false;
+    }
+
+    if (this.activeScene) {
+        this.activeScene.stop();
+    }
+
+    const scene = this.scenes[sceneName];
+    this.activeScene = scene;
+    scene.start(...args);
+
+    return true;
+}
 }

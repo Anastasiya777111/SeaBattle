@@ -5,6 +5,16 @@ class Field{
     _private_matrix = null;
 	_private_changed = true;
 
+	get loser() {
+		for (const ship of this.ships) {
+			if (!ship.killed) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
     get matrix (){
 if(!this._private_changed){
     this._private_matrix;
@@ -20,6 +30,8 @@ x,
 y, 
 ship: null,
 free: true,
+shoted:false,
+wounded: false,
         };
         row.push(item);
     }
@@ -50,6 +62,15 @@ for (const ship of this.ships) {
             }
         }
     }
+}
+
+for (const {x,y} of this.shots){
+	const item=matrix[y][x]
+item.shoted=true;
+
+ if(item.ship){
+	 item.wounded=true;
+ }
 }
 
 this._private_matrix=matrix;
@@ -146,13 +167,69 @@ parseInt(n)===n || !isNaN(n) && ![Infinity, -Infinity].includes(n);
 		return ships.length;
 	}
 
-    addShot() {
-        this._private_changed=true;
-    }
+	addShot(shot) {
+		for (const { x, y } of this.shots) {
+			if (x === shot.x && y === shot.y) {
+				return false;
+			}
+		}
 
-    removeShot() {
-        this._private_changed=true;
-    }
+		this.shots.push(shot);
+		this._private_changed = true;
+
+		const matrix = this.matrix;
+		const { x, y } = shot;
+
+		if (matrix[y][x].ship) {
+			shot.setVariant("wounded");
+
+			const { ship } = matrix[y][x];
+			const dx = ship.direction === "row";
+			const dy = ship.direction === "column";
+
+			let killed = true;
+
+			for (let i = 0; i < ship.size; i++) {
+				const cx = ship.x + dx * i;
+				const cy = ship.y + dy * i;
+				const item = matrix[cy][cx];
+
+				if (!item.wounded) {
+					killed = false;
+					break;
+				}
+			}
+
+			if (killed) {
+				ship.killed = true;
+
+				for (let i = 0; i < ship.size; i++) {
+					const cx = ship.x + dx * i;
+					const cy = ship.y + dy * i;
+
+					const shot = this.shots.find(
+						(shot) => shot.x === cx && shot.y === cy
+					);
+					shot.setVariant("killed");
+				}
+			}
+		}
+
+		this._private_changed = true;
+		return true;
+	}
+
+	removeShot(shot) {
+		if (!this.shots.includes(shot)) {
+			return false;
+		}
+
+		const index = this.shots.indexOf(shot);
+		this.shots.splice(index, 1);
+
+		this._private_changed = true;
+		return true;
+	}
 
     removeAllShots() {
         const shots=this.shots.slice()
@@ -181,4 +258,9 @@ parseInt(n)===n || !isNaN(n) && ![Infinity, -Infinity].includes(n);
 			}
 		}
 	} 
+
+	clear() {
+		this.removeAllShots();
+		this.removeAllShips();
+	}
 }
