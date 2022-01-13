@@ -23,6 +23,8 @@ body {
     color: rgb(7, 7, 54);
 }
 
+
+
 .appBody {
 	margin-top: 50px;
 	margin-bottom: 50px;
@@ -79,6 +81,7 @@ body {
 	top: -35px;
 }
 
+
 .ship {
 	position: absolute;
 	top: 0;
@@ -121,6 +124,7 @@ body {
 }
 
 
+
 .appActions {
 	height: 100%;
 	display: flex;
@@ -128,11 +132,18 @@ body {
 	justify-content: space-between;
 }
 
-.app-action {
-	width: 210px;
+
+
+.appChoice {
+	width: 273px;
+    height: 55px;
 	padding: 10px;
+    font-size: 12pt;
 	margin-bottom: 10px;
+    background-color: rgb(46, 163, 192);
+    border-radius: 17px;
 }
+
 
 .shot {
 	width: 32px;
@@ -184,12 +195,13 @@ body {
 }
 
 
-.appChoice {
-	width: 273px;
-    height: 55px;
-	padding: 10px;
-    font-size: 12pt;
-	margin-bottom: 10px;
-    background-color: rgb(46, 163, 192);
-    border-radius: 17px;
+.hidden {
+	display: none;
 }
+
+
+
+
+
+
+

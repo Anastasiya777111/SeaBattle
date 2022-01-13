@@ -16,20 +16,59 @@ class PreparationScene extends Scene {
 draggedOffSetX=0;
 draggedOffSetY=0;
 
-    init() {
-        const {player}=this.app;
+removeEventListeners = [];
 
-        for (const {size, direction, startX, startY} of shipDatas){
-            const ship=new ShipView(size, direction, startX, startY);
-            player.addShip(ship);
-        }
+    init() {
+		this.manually();
     }
 
     start() {
-        const{player}=this.app;
 
-        console.log(player.matrix)
+		this.removeEventListeners = [];
+
+		document
+		.querySelectorAll(".appActions")
+		.forEach((element) => element.classList.add("hidden"));
+
+	document
+		.querySelector('[data-scene="preparation"]')
+		.classList.remove("hidden");
+
+const randomizeButton=document.querySelector('[data-computer="randomize"]');
+const manuallyButton=document.querySelector('[data-computer="manually"]');
+const lightButton=document.querySelector('[data-computer="light"]');
+const middleButton=document.querySelector('[data-computer="middle"]');
+const hardButton=document.querySelector('[data-computer="hard"]');
+
+this.removeEventListeners.push(
+	addListener(manuallyButton, "click", () => this.manually())
+);
+
+this.removeEventListeners.push(
+	addListener(randomizeButton, "click", () => this.randomize())
+);
+
+this.removeEventListeners.push(
+	addListener(lightButton, "click", () => this.startComputer("light"))
+);
+
+this.removeEventListeners.push(
+	addListener(middleButton, "click", () => this.startComputer("middle"))
+);
+
+this.removeEventListeners.push(
+	addListener(hardButton, "click", () => this.startComputer("hard"))
+);
+
     }
+
+	stop() {
+		for (const removeEventListener of this.removeEventListeners) {
+			removeEventListener();
+		}
+
+		this.removeEventListeners = [];
+	}
 
     update() {
         const {mouse, player}= this.app;
@@ -43,6 +82,9 @@ const shipRect=ship.div.getBoundingClientRect();
     this.draggedShip=ship;
     this.draggedOffSetX=mouse.x-shipRect.left;
 this.draggedOffSetY=mouse.y-shipRect.top;
+
+ship.x=null;
+ship.y=null;
 
 }
         }
@@ -88,8 +130,42 @@ this.draggedOffSetY=mouse.y-shipRect.top;
 			this.draggedShip.toggleDirection();
 		}
 
-
+if(player.complete){
+	document.querySelector('[data-computer="light"]').disabled = false;
+			document.querySelector('[data-computer="middle"]').disabled = false;
+			document.querySelector('[data-computer="hard"]').disabled = false;
+}
+	else{
+		document.querySelector('[data-computer="light"]').disabled = true;
+			document.querySelector('[data-computer="middle"]').disabled = true;
+			document.querySelector('[data-computer="hard"]').disabled = true;
+	}	
     }
 
-    stop() {}
+	randomize() {
+		const {player} = this.app;
+
+		player.randomize(ShipView);
+	
+		for(let i=0; i<10; i++) {
+			const ship=player.ships[i]
+			ship.startX=shipDatas[i].startX;
+			ship.startY=shipDatas[i].startY;
+		}
+	}
+manually() {
+	const {player}=this.app;
+
+player.removeAllShips();
+
+	for (const {size, direction, startX, startY} of shipDatas){
+		const ship=new ShipView(size, direction, startX, startY);
+		player.addShip(ship);
+	}
+}
+
+startComputer(level){
+console.log(level)
+}
+    
 }

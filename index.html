@@ -13,7 +13,7 @@
             <h1 class="appTitle">Sea Battle</h1>
         </div>
     <div class="appBody">
-    <div class="fieldOfBattle" data-side="player"></div>
+    <div data-side="player"></div>
     <div class="appButtons">
         <div class="appActions" data-scene="preparation">
             <button class="appChoice" data-computer="light" disabled>
@@ -38,7 +38,11 @@
                 Расставить корабли случайно
             </button>
         </div>
+    <div class="appActions hidden" data-scene="computer">
+        <div class="fieldOfBattle-status">Ваш ход</div>
+        <button class="appChoice" data-action="gaveup">Сдаться</button>
     </div>
+</div>
     <div data-side="opponent"></div>
 </div>
 </div>
@@ -49,6 +53,7 @@
 <script src="src/Application.js"></script>
 <script src="src/Scene.js"></script>
 <script src="src/scenes/PreparationScene.js"></script>
+<script src="src/scenes/ComputerScene.js"></script>
 
 <script src="src/Field.js"></script>
 <script src="src/FieldView.js"></script>

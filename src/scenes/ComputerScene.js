@@ -1,0 +1,1 @@
+class ComputerScene extends Scene {}
