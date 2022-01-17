@@ -11,6 +11,9 @@
     <div class="app">
         <div class="appHeader">
             <h1 class="appTitle">Sea Battle</h1>
+            <p class="appSubtitle">
+                <span data-playersCount>0</span> игрок(ов) онлайн
+            </p>
         </div>
     <div class="appBody">
     <div data-side="player"></div>
@@ -31,6 +34,9 @@
             <button class="appChoice" data-computer="challenge" disabled>
                 Вызвать на бой
             </button>
+            <button class="appChoice"data-computer="takeChallenge" disabled>
+                Принять вызов
+            </button>
             <button class="appChoice" data-computer="manually">
                 Расставить корабли вручную
             </button>
@@ -45,8 +51,19 @@
             Играть еще раз
         </button>
     </div>
+    <div class="appActions hidden" data-scene="online">
+        <div class="fieldOfBattle-status">Ваш ход</div>
+        <button class="appChoice" data-action="gaveup">Сдаться</button>
+		<button class="appChoice" data-action="again">
+							Играть еще раз
+						</button>
+    </div>
 </div>
     <div data-side="opponent"></div>
+</div>
+<div class="app-chat hidden">
+    <input class="app-chatinput" />
+    <div class="app-messages"></div>
 </div>
     </div>
 </div>
@@ -58,6 +75,7 @@
 <script src="src/Scene.js"></script>
 <script src="src/scenes/PreparationScene.js"></script>
 <script src="src/scenes/ComputerScene.js"></script>
+<script src="src/scenes/OnlineScene.js"></script>
 
 <script src="src/Field.js"></script>
 <script src="src/FieldView.js"></script>
@@ -68,6 +86,7 @@
 <script src="src/Shot.js"></script>
 <script src="src/ShotView.js"></script>
 
+<script src="socket.io/socket.io.js"></script>
 <script src="src/script.js"></script>
 </body>
 </html>

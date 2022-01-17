@@ -23,8 +23,6 @@ body {
     color: rgb(7, 7, 54);
 }
 
-
-
 .appBody {
 	margin-top: 50px;
 	margin-bottom: 50px;
@@ -125,16 +123,12 @@ body {
 	height: 131px;
 }
 
-
-
 .appActions {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
-
-
 
 .appChoice {
 	width: 273px;
@@ -145,7 +139,6 @@ body {
     background-color: rgb(46, 163, 192);
     border-radius: 17px;
 }
-
 
 .shot {
 	width: 32px;
@@ -158,7 +151,6 @@ body {
 }
 
 .shot-missed {
-	/* color: gray; */
 	color: "black";
 }
 
@@ -204,9 +196,10 @@ body {
 
 .app-chatinput {
 	width: 100%;
-	height: 35px;
+	height: 39px;
 	font-size: 25px;
 	text-align: left;
+	background:rgb(176, 234, 241);
 }
 
 .app-messages {
@@ -214,8 +207,8 @@ body {
 
 .app-message {
 	text-align: left;
-	color: #3c3c3c;
-	font-size: 16px;
+	color: rgb(1, 1, 27);
+	font-size: 20px;
 	margin-top: 10px;
 }
 
